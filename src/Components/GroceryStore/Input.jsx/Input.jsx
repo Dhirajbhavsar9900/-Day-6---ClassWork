@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState } from "react";
 import Store from "../Store/Store";
 import {  toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function Input() {
   const [text, setText] = useState("");
   const [submitText, setSubmitText] = useState([]);
+
 
   const handleText = (e) => {
     let value = e.target.value;
