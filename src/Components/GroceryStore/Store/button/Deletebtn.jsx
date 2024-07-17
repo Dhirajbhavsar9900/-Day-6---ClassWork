@@ -1,17 +1,12 @@
-
-function Deletebtn({item, onDelete}) {
-  
-  const handleDelete = ()=>{
-    onDelete(item);
-  }
-  
+function Deletebtn({ item, onDelete }) {
   return (
-    <div>
-        <button className="bg-red-500 p-2 px-5 rounded-lg hover:bg-red-700 hover:transition-all" onClick={handleDelete}>
-            <span className=" font-sans text-white font-semibold text-[15px]">Remove</span>
-        </button>
-    </div>
-  )
+    <button
+      onClick={() => onDelete(item)}
+      className="p-2 bg-red-500 text-white rounded-lg"
+    >
+      Delete
+    </button>
+  );
 }
 
-export default Deletebtn
+export default Deletebtn;

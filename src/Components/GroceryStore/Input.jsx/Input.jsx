@@ -10,14 +10,13 @@ function Input() {
 
 
   useEffect(() => {
-    const storing = JSON.parse(localStorage.getItem(submitText)) || [];
+    const storing = JSON.parse(localStorage.getItem("submit-text")) || []
     setSubmitText(storing)
   },[]);
-
-  useEffect(() => {
-    localStorage.setItem('submitText', JSON.stringify(submitText));
-  }, [submitText]);
-
+  // useEffect(() => {
+    
+  // }, [submitText]);
+ 
   const handleText = (e) => {
     let value = e.target.value;
     setText(value);
@@ -34,6 +33,7 @@ function Input() {
       }
       else{
         setSubmitText([...submitText, text]);
+        localStorage.setItem('submit-text', JSON.stringify(submitText));
         setText("");
         // console.log(value);
         toast.success("Item Added Successfully!")
@@ -69,7 +69,7 @@ function Input() {
         </button>
       </div>
        <div className="mt-10">
-        {submitText.length > 0 &&
+        {submitText.length > 0 && 
           submitText.map((item, id) => {
             return <Store item={item} key={id} onDelete={handleDelete} />;
           })}
