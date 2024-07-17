@@ -26,11 +26,18 @@ function Input() {
         setText("");
         // console.log(value);
         toast.success("Item Added Successfully!")
+        console.log(submitText);
       }
-      
   };
 
-  console.log(submitText)
+  const handleDelete = (itemToRemove) => {
+    const updatedList = submitText.filter((item) => item !== itemToRemove);
+    setSubmitText(updatedList);
+    toast.success('Item Removed Successfully!');
+  };
+
+
+  // console.log(submitText)
 
   return (
     <>
@@ -50,10 +57,11 @@ function Input() {
         </span>
         </button>
       </div>
-      <div className=" mt-10">
-        {submitText.length > 0 &&submitText.map((item, id) => {
-          return <Store item={item} key={id} submitText={submitText} />;
-        })}
+       <div className="mt-10">
+        {submitText.length > 0 &&
+          submitText.map((item, id) => {
+            return <Store item={item} key={id} onDelete={handleDelete} />;
+          })}
       </div>
       <ToastContainer />
     
