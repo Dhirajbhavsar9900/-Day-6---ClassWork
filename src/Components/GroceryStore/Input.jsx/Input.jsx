@@ -1,4 +1,4 @@
-import {useState } from "react";
+import { useEffect, useState } from "react";
 import Store from "../Store/Store";
 import {  toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,6 +7,16 @@ function Input() {
   const [text, setText] = useState("");
   const [submitText, setSubmitText] = useState([]);
 
+
+
+  useEffect(() => {
+    const storing = JSON.parse(localStorage.getItem(submitText)) || [];
+    setSubmitText(storing)
+  },[]);
+
+  useEffect(() => {
+    localStorage.setItem('submitText', JSON.stringify(submitText));
+  }, [submitText]);
 
   const handleText = (e) => {
     let value = e.target.value;
