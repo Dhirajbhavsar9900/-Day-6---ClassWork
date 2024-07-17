@@ -26,19 +26,20 @@ function Input() {
   // 
   // };
 
-  const handleadd = () => {
+  const handleadd = async () => {
     let value = text;
-      if (value.trim() === ""){
-        toast.error("Please Add Your Item");
-      }
-      else{
+       if (value.trim() === ""){
+         toast.error("Please Add Your Item");
+         return ;
+       }
+      // else{
         setSubmitText([...submitText, text]);
-        localStorage.setItem('submit-text', JSON.stringify(submitText));
+        localStorage.setItem('submit-text', JSON.stringify([...JSON.parse(localStorage.getItem("submit-text")),text]));
         setText("");
         // console.log(value);
         toast.success("Item Added Successfully!")
         console.log(submitText);
-      }
+      //}
   };
 
   const handleDelete = (itemToRemove) => {
